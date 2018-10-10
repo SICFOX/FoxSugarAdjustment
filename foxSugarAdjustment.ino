@@ -38,6 +38,11 @@ void setup() {
   pinMode(sol2, OUTPUT);
   pinMode(sol3, OUTPUT);
   pinMode(sol4, OUTPUT);
+  pinMode(0,OUTPUT);
+  pinMode(1,OUTPUT);
+
+  digitalWrite(0,LOW);
+  digitalWrite(1,HIGH);
 
   Serial.begin(9600);
   moveWaitPos();
@@ -57,36 +62,52 @@ void loop() {
 
       switch (candyColor) {
         case 0 :
+          candyOFF();
           moveFillPos();
           delay(1000);
           solKnockCount = solKnockCount*cali0;
           solKnock(9);
           delay(3000);
           moveWaitPos();
+          Serial.write(0);
+          delay(4000);
+          candyON();
           break;
         case 1 :
+          candyOFF();
           moveFillPos();
           delay(1000);
           solKnockCount = solKnockCount*cali1;
           solKnock(10);
           delay(3000);
           moveWaitPos();
+          Serial.write(0);
+          delay(4000);
+          candyON();
           break;
         case 2 :
+          candyOFF();
           moveFillPos();
           delay(1000);
           solKnockCount = solKnockCount*cali2;
           solKnock(11);
           delay(3000);
           moveWaitPos();
+          Serial.write(0);
+          delay(4000);
+          candyON();
           break;
         case 3 :
+          candyOFF();
           moveFillPos();
           delay(1000);
           solKnock(12);
           solKnockCount = solKnockCount*cali3;
           delay(3000);
           moveWaitPos();
+          Serial.write(10);
+          delay(4000);
+          candyON();
           break;
         default:
           break;
@@ -128,20 +149,11 @@ void solKnock(int x) {
   digitalWrite(vib, LOW);   //Vibration回転終了
 }
 
+void candyOFF(){
+  digitalWrite(1,LOW);
+}
 
-////WaitPositionに戻る関数
-//void moveWaitPos() {
-//  updownServo.write(40, 20, true);
-//  bottomServo.write(50, 20, true);
-//  bottomServo.wait();
-//  updownServo.wait();
-//}
-//
-////砂糖FillPositionに戻る関数
-//void moveFillPos() {
-//  updownServo.write(45, 20, true);
-//  bottomServo.write(95, 20, true);
-//  bottomServo.wait();
-//  updownServo.wait();
-//}
+void candyON(){
+  digitalWrite(1,HIGH);
+}
 
