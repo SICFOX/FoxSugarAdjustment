@@ -40,7 +40,7 @@ void setup() {
   pinMode(sol4, OUTPUT);
 
   Serial.begin(9600);
-  moveWaitPos();
+//  moveWaitPos();
 }
 
 void loop() {
@@ -62,7 +62,7 @@ void loop() {
           solKnockCount = solKnockCount*cali0;
           solKnock(9);
           delay(3000);
-          moveWaitPos();
+//          moveWaitPos();
           break;
         case 1 :
           moveFillPos();
@@ -70,7 +70,7 @@ void loop() {
           solKnockCount = solKnockCount*cali1;
           solKnock(10);
           delay(3000);
-          moveWaitPos();
+//          moveWaitPos();
           break;
         case 2 :
           moveFillPos();
@@ -78,7 +78,7 @@ void loop() {
           solKnockCount = solKnockCount*cali2;
           solKnock(11);
           delay(3000);
-          moveWaitPos();
+//          moveWaitPos();
           break;
         case 3 :
           moveFillPos();
@@ -86,7 +86,7 @@ void loop() {
           solKnock(12);
           solKnockCount = solKnockCount*cali3;
           delay(3000);
-          moveWaitPos();
+//          moveWaitPos();
           break;
         default:
           break;
