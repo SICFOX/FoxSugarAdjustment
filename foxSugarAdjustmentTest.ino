@@ -38,14 +38,9 @@ void setup() {
   pinMode(sol2, OUTPUT);
   pinMode(sol3, OUTPUT);
   pinMode(sol4, OUTPUT);
-  pinMode(2, OUTPUT);
-  pinMode(7, OUTPUT);
-
-  digitalWrite(2, LOW);
-  digitalWrite(7, HIGH);
 
   Serial.begin(9600);
-  moveWaitPos();
+//  moveWaitPos();
 }
 
 void loop() {
@@ -62,48 +57,36 @@ void loop() {
 
       switch (candyColor) {
         case 0 :
-          candyOFF();
           moveFillPos();
           delay(1000);
-          solKnockCount = solKnockCount * cali0;
+          solKnockCount = solKnockCount*cali0;
           solKnock(9);
           delay(3000);
-          moveWaitPos();
-          delay(4000);
-          candyON();
+//          moveWaitPos();
           break;
         case 1 :
-          candyOFF();
           moveFillPos();
           delay(1000);
-          solKnockCount = solKnockCount * cali1;
+          solKnockCount = solKnockCount*cali1;
           solKnock(10);
           delay(3000);
-          moveWaitPos();
-          delay(4000);
-          candyON();
+//          moveWaitPos();
           break;
         case 2 :
-          candyOFF();
           moveFillPos();
           delay(1000);
-          solKnockCount = solKnockCount * cali2;
+          solKnockCount = solKnockCount*cali2;
           solKnock(11);
           delay(3000);
-          moveWaitPos();
-          delay(4000);
-          candyON();
+//          moveWaitPos();
           break;
         case 3 :
-          candyOFF();
           moveFillPos();
           delay(1000);
           solKnock(12);
-          solKnockCount = solKnockCount * cali3;
+          solKnockCount = solKnockCount*cali3;
           delay(3000);
-          moveWaitPos();
-          delay(4000);
-          candyON();
+//          moveWaitPos();
           break;
         default:
           break;
@@ -122,8 +105,6 @@ void moveWaitPos() {
   bottomServo.write(0, 20, true);
   bottomServo.wait();
   updownServo.wait();
-
-  //Serial.write(0);
 }
 
 //砂糖FillPositionに戻る関数
@@ -147,11 +128,20 @@ void solKnock(int x) {
   digitalWrite(vib, LOW);   //Vibration回転終了
 }
 
-void candyOFF() {
-  digitalWrite(7, LOW);
-}
 
-void candyON() {
-  digitalWrite(7, HIGH);
-}
+////WaitPositionに戻る関数
+//void moveWaitPos() {
+//  updownServo.write(40, 20, true);
+//  bottomServo.write(50, 20, true);
+//  bottomServo.wait();
+//  updownServo.wait();
+//}
+//
+////砂糖FillPositionに戻る関数
+//void moveFillPos() {
+//  updownServo.write(45, 20, true);
+//  bottomServo.write(95, 20, true);
+//  bottomServo.wait();
+//  updownServo.wait();
+//}
 
